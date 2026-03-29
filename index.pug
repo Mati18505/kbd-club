@@ -1,0 +1,38 @@
+include partials/head.pug
+include partials/section-header.pug
+include partials/card-item.pug
+
+- const title = "KBD | Strona główna"
+
+doctype html
+html(lang="pl")
+  +head(title)
+  body(id="main-page")
+    include partials/nav.pug
+
+    header.text-center
+      .banner.d-flex.justify-content-center.align-items-center
+        .mask(style='background-color: rgba(255, 255, 255, 0.8);')
+          .px-5.py-3
+            h1.mb-3 Radość z tworzenia
+            h4.mb-3 Witamy w klubie DIY, miejscu gdzie hobbyści tworzą najciekawsze klawiatury!
+
+    #Media.container.mt-5
+      h2.t-title.m-4 U nas nauczysz się
+      .row
+        +cardItem('Tworzyć projekt', 'Od koncepcji do gotowego designu klawiatury.')
+        +cardItem('Dobrać odpowiednie części', 'Jaki mikrokontroler wybrać? Jakie switche?')
+        +cardItem('Programować firmware', 'Nauczysz się QMK i dostosujesz swoje klawiatury.')
+        +cardItem('Testować i optymalizować', 'Poznasz metody testowania i poprawiania ergonomii.')
+    hr
+    section.py-5
+      .container
+        .row
+          .col-md-8
+            h3.t-title.text-danger O nas
+              h4.s-subtitle Klub KBD powstał z myślą o pasjonatach mechanicznych klawiatur.
+              p Naszym celem jest edukacja i wsparcie w tworzeniu własnych projektów – od doboru części, przez montaż, aż po programowanie firmware.
+    hr
+
+    include partials/contact.pug
+    include partials/footer.pug

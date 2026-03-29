@@ -1,0 +1,38 @@
+include partials/head.pug
+include partials/section-header.pug
+include partials/carousel-item.pug
+
+- const title = "KBD | Galeria DIY"
+- var slides = []
+- slides.push({src: 'media/galeria/corne.jpg', alt: 'corne', title: 'Corne', desc: '6 kolumn po 3 klawisze + klawisze pod kciuki.', active: true})
+- slides.push({src: 'media/galeria/dactyl.jpg', alt: 'dactyl', title: 'Dactyl', desc: 'Krzywizna dostosowana do dłoni. Bezprzewodowa.'})
+- slides.push({src: 'media/galeria/crosses.jpeg', alt: 'crosses', title: 'Crosses (MiaoMiao variant)', desc: 'Bezprzewodowa, 36 klawiszy, 2 trackballe, firmware ZMK.'})
+- slides.push({src: 'media/galeria/neo-ergo.webp', alt: 'neo ergo', title: 'Neo ergo', desc: 'Układ alice 60%.'})
+- slides.push({src: 'media/galeria/silakka54.webp', alt: 'silakka54', title: 'Silakka54', desc: 'Mikrokontroler RP2040, 54 klawisze, hotswap switchy.'})
+
+doctype html
+html(lang="pl")
+  +head(title)
+  body(id="gallery")
+    include partials/nav.pug
+    header.pb-5.text-center
+      +sectionHeader('klawiatury DIY', 'Wszystkie klawiatury zostały wykonane własnoręcznie przez członków naszego klubu.')
+    section.gallery-section.pb-5
+      .container
+        #kbdCarousel.carousel.slide.carousel-fade.shadow-lg(data-ride="carousel")
+          ol.carousel-indicators
+            each slide, index in slides
+              li(data-target="#kbdCarousel", data-slide-to=index, class=slide.active ? 'active' : '')
+          .carousel-inner.border.border-secondary
+            each slide in slides
+              +carouselItem(slide.src, slide.alt, slide.title, slide.desc, slide.active)
+          a.carousel-control-prev(href="#kbdCarousel" role="button" data-slide="prev")
+            span.carousel-control-prev-icon(aria-hidden="true")
+            span.sr-only Poprzednie
+          a.carousel-control-next(href="#kbdCarousel" role="button" data-slide="next")
+            span.carousel-control-next-icon(aria-hidden="true")
+            span.sr-only Następne
+    include partials/footer.pug
+    .popup-img
+      span &times;
+      img(src='' alt='')
